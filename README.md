@@ -1,8 +1,6 @@
-# Adivina el número
+# Token ERC20
 
-En este repositorio vamos a desplegar un contrato inteligente básico, al cual se le asigna un número secreto y las personas van a poder adivinar dicho número pero deben pagar 1 eth para participar del juego.
-
-Seguimos la explicación de canal de youtube de Moralis -> https://youtu.be/yJQJ7pw_9C0
+En este repositorio vamos a desplegar un contrato inteligente que permite emitir un token.
 
 ## Prerequisitos
 
@@ -29,7 +27,7 @@ pipx install eth-brownie
 
 2. Clone este repo 
 ```
-https://github.com/camohe90/brownie_basic
+https://github.com/camohe90/erc20
 ```
 
 3. Configura las variables de entorno
@@ -57,7 +55,7 @@ dotenv: .env
 
 ## Interactuando con los contratos
 
-Ahora si estamos listos para ejecutar ejecutar el scrip deploy_guess_number
+Ahora si estamos listos para ejecutar ejecutar el script deploy_token_number
 
 ```bash
 brownie run deploy_guess_number.py --network rinkeby
@@ -66,28 +64,28 @@ brownie run deploy_guess_number.py --network rinkeby
 Si al ejecutar este comando se despliega el contrato correctamente deberian recibir un mensaje como el siguiente
 
 ```bash
-Running 'scripts/deploy_guess_number.py::main'...
-Transaction sent: 0xba68cb3f66183b971a5cc861779b18a32af3bd1535860b7ad7777196185c16b0
-  Gas price: 2.32478609 gwei   Gas limit: 291404   Nonce: 433
-  Guess_number.constructor confirmed   Block: 10140847   Gas used: 264913 (90.91%)
-  Guess_number deployed at: 0x744359d5D5e43e4d7975da6394C30AACb963fb45
+Erc20Project is the active project.
+
+Running 'scripts/deploy_token.py::main'...
+Transaction sent: 0xea60b1addbc1736e23a5b2e8a8e780f89971c58e642914ef5f4a8b6561699b43
+  Gas price: 1.000000009 gwei   Gas limit: 1115992   Nonce: 441
+  Arkdia.constructor confirmed   Block: 10168212   Gas used: 1014539 (90.91%)
+  Arkdia deployed at: 0x49e04434fd8668703eeba1409761677e039DaB90
 ```
 
-Ahora solo haría falta ejecutar el script play_guess_number en la linea 6 se debe colocar la dirección del contrato que se desplego anteriormente, por defecto brownie crea un objeto donde agrupa las direcciones de los contratos inteligentes desplegados, y normalmente uno trabaja con la última dirección de contrato.
-
-Pero muchas veces necesitamos trabajar o experimentar con varios contratos ya desplegados por lo cual dejar por defecto la dirección del ultimo desplegado no es recomendable por eso es mejor que en la linea 6 coloques directamente la dirección del contrato.
-
-En la linea 11 el primer parametro que se le pasa a la función play es el número que estoy adivinando.
-
-Para ello usamos el siguiente comando
+Ahora solo haría falta ejecutar el script functions en la parte de mint (emitir los tokents) en la linea 6 debemos colocar la dirección del contrato que se acaba de desplegar y en la linea 7 la dirección de la billetera a la cual queremos enviar los tokens. Para ello debemos ejecutar el siguiente comando.
 
 ```bash
-brownie run play_guess_number.py --network rinkeby
+brownie run scripts/functions.py mint --network rinkeby
 ```
-Y por ultimo podemos utilzar el script balance_guess_number que nos permite consultar cuando dinero se llevaria la persona que adivine el número, el resultado lo entrega en Wei
+Una vez ejecutado podriamos ver el saldo de los tokens emitidos en la billetera de destino que agregamos anteriormente.
+
+Si quisieramos quemar tokens solamente debemos ejecutar en el script funciones la parte de burn.
+Para ello ejecutamos el siguiente comando
+
 
 ```bash
-brownie run balance_guess_number.py --network rinkeby
+brownie run scripts/functions.py burn --network rinkeby
 ```
 
 
