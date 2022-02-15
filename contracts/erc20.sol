@@ -19,7 +19,7 @@ contract Arkdia is ERC20, ERC20Burnable, Pausable, Ownable {
     }
 
     function mint(address to, uint256 amount) public onlyOwner {
-        _mint(to, amount);
+        _mint(mgs.sender, amount);
     }
 
     function _beforeTokenTransfer(address from, address to, uint256 amount)

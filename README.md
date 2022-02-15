@@ -93,7 +93,6 @@ brownie run scripts/functions.py burn --network rinkeby
 
 Para empezar con brownie:
 
-* [Canal de youtube de moralis ](https://youtu.be/yJQJ7pw_9C0)
 * Puedes revisar los otros [Brownie mixes](https://github.com/brownie-mix/) que pueden ser usado como punto de partida para tus propios contratos. Allí encontraras ejemplos para emepzar como.
 * ["Getting Started with Brownie"](https://medium.com/@iamdefinitelyahuman/getting-started-with-brownie-part-1-9b2181f4cb99) es un buen tutorial para que te familiarices con Brownie.
 * Para más información especifica, puedes revisar la [documentación Brownie](https://eth-brownie.readthedocs.io/en/stable/).

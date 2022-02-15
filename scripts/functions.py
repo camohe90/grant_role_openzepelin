@@ -17,5 +17,5 @@ def burn():
     signer_details = {
         'from' : account
     }
-    guess_number_tx = token.burn(10**18, signer_details)
+    guess_number_tx = token.burn(100*10**18, signer_details)
     return guess_number_tx
