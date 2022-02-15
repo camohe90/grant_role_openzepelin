@@ -1,5 +1,5 @@
 
-from brownie import  accounts, Arkdia, config
+from brownie import  accounts, ContratoConRoles, config
 
 # Basic_storage es el nombre del contrato inteligente y no del archivo .sol
 
@@ -8,6 +8,6 @@ def main():
     deploy_details = {
         'from' : account
     }
-    basic_storage_tx = Arkdia.deploy(deploy_details)
+    basic_storage_tx = ContratoConRoles.deploy(deploy_details)
     return basic_storage_tx
 
