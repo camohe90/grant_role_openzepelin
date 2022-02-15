@@ -58,7 +58,7 @@ dotenv: .env
 Ahora si estamos listos para ejecutar ejecutar el script deploy_token_number
 
 ```bash
-brownie run deploy_guess_number.py --network rinkeby
+brownie run deploy_token.py --network rinkeby
 ```
 
 Si al ejecutar este comando se despliega el contrato correctamente deberian recibir un mensaje como el siguiente
